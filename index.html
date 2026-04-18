@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Josue David — Developer</title>
+<title>Josue David — Aprendiz de Desarrollo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -37,7 +37,6 @@
     overflow-x: hidden;
   }
 
-  /* Cursor glow */
   body::before {
     content: '';
     position: fixed;
@@ -52,7 +51,6 @@
     transition: left 0.3s ease, top 0.3s ease;
   }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     padding: 1.25rem 3rem;
@@ -100,7 +98,6 @@
 
   .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
 
-  /* HERO */
   #hero {
     min-height: 100vh;
     display: flex; align-items: center;
@@ -209,7 +206,6 @@
 
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent2); background: rgba(124,109,250,0.06); }
 
-  /* Hero Card */
   .hero-card {
     background: var(--bg2);
     border: 0.5px solid var(--border);
@@ -285,7 +281,6 @@
   .skill-tag.green { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.3); color: #86efac; }
   .skill-tag.amber { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: #fde68a; }
 
-  /* SECTIONS */
   section {
     padding: 6rem 3rem;
     max-width: 1200px;
@@ -318,7 +313,6 @@
     margin-bottom: 3.5rem;
   }
 
-  /* PROJECTS */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -401,7 +395,6 @@
     padding: 0.2rem 0.55rem;
   }
 
-  /* SKILLS */
   .skills-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -440,7 +433,6 @@
 
   .sg-item:hover { color: var(--accent3); border-color: var(--border); }
 
-  /* ABOUT / TIMELINE */
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -490,7 +482,6 @@
   .tl-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
   .tl-desc { font-size: 0.82rem; color: var(--muted); }
 
-  /* CONTACT */
   #contact {
     background: var(--bg2);
     border-radius: 32px;
@@ -552,7 +543,6 @@
     font-size: 0.85rem;
   }
 
-  /* FOOTER */
   footer {
     text-align: center;
     padding: 2rem;
@@ -562,7 +552,6 @@
     border-top: 0.5px solid var(--border2);
   }
 
-  /* DIVIDER */
   .divider {
     width: 100%;
     height: 0.5px;
@@ -571,7 +560,6 @@
     max-width: 1200px;
   }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -590,7 +578,6 @@
 
   .reveal.visible { opacity: 1; transform: none; }
 
-  /* Background grid */
   .bg-grid {
     position: fixed;
     inset: 0; z-index: -1;
@@ -600,7 +587,6 @@
     background-size: 60px 60px;
   }
 
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     nav ul { gap: 1.5rem; }
@@ -636,18 +622,18 @@
 <div id="hero">
   <div class="hero-grid">
     <div>
-      <div class="hero-tag">Disponible para proyectos freelance</div>
+      <div class="hero-tag">📘 Aprendiendo todos los días</div>
       <h1 class="hero-title">
         Josue David<br>
-        <span class="line2">Developer &</span><br>
-        Automatizador
+        <span class="line2">Aprendiz de</span><br>
+        Desarrollo
       </h1>
       <p class="hero-sub">
-        Construyo <strong>apps web, herramientas de escritorio y automatizaciones</strong> con Python y Django. Basado en Arequipa, Perú — trabajando con clientes en todo el mundo.
+        Estoy empezando en el mundo del <strong>desarrollo de software</strong> y la automatización con Python. Me gusta crear herramientas útiles y seguir aprendiendo. <strong>Busco mi primera oportunidad profesional.</strong>
       </p>
       <div class="hero-btns">
-        <a href="#proyectos" class="btn btn-primary">Ver proyectos →</a>
-        <a href="#contact" class="btn btn-ghost">Hablemos</a>
+        <a href="#proyectos" class="btn btn-primary">Ver lo que hago →</a>
+        <a href="#contact" class="btn btn-ghost">¿Charlamos?</a>
       </div>
     </div>
 
@@ -656,35 +642,35 @@
         <div class="hc-avatar">JD</div>
         <div>
           <div class="hc-name">Josue David</div>
-          <div class="hc-role">Python · Django · Automatización</div>
+          <div class="hc-role">Python · Django · Automatización (en aprendizaje)</div>
         </div>
       </div>
       <div class="hc-stats">
         <div class="hc-stat">
-          <span class="hc-stat-n">3+</span>
-          <span class="hc-stat-l">Proyectos activos</span>
+          <span class="hc-stat-n">+1</span>
+          <span class="hc-stat-l">Proyecto completado</span>
         </div>
         <div class="hc-stat">
           <span class="hc-stat-n">2026</span>
           <span class="hc-stat-l">Arequipa, Perú</span>
         </div>
         <div class="hc-stat">
-          <span class="hc-stat-n">100%</span>
-          <span class="hc-stat-l">Remoto</span>
+          <span class="hc-stat-n">∞</span>
+          <span class="hc-stat-l">Ganas de aprender</span>
         </div>
         <div class="hc-stat">
-          <span class="hc-stat-n">∞</span>
-          <span class="hc-stat-l">Automatizaciones</span>
+          <span class="hc-stat-n">✨</span>
+          <span class="hc-stat-l">Construyendo portfolio</span>
         </div>
       </div>
       <div class="hc-skills">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Django</span>
+        <span class="skill-tag">Python básico</span>
+        <span class="skill-tag">Django (inicial)</span>
+        <span class="skill-tag green">Automatización</span>
         <span class="skill-tag green">Selenium</span>
-        <span class="skill-tag green">PyAutoGUI</span>
         <span class="skill-tag amber">CustomTkinter</span>
         <span class="skill-tag amber">SMTP</span>
-        <span class="skill-tag">PyInstaller</span>
+        <span class="skill-tag">Git</span>
       </div>
     </div>
   </div>
@@ -694,40 +680,39 @@
 
 <!-- PROYECTOS -->
 <section id="proyectos">
-  <div class="section-label">// proyectos</div>
-  <h2 class="section-title">Lo que he construido</h2>
-  <p class="section-desc">Herramientas reales resolviendo problemas reales — desde automatización hasta apps de escritorio.</p>
+  <div class="section-label">// lo que he intentado</div>
+  <h2 class="section-title">Mis primeros pasos</h2>
+  <p class="section-desc">Pequeños proyectos que he ido haciendo mientras aprendo. Son sencillos, pero funcionales.</p>
 
   <div class="projects-grid">
 
     <div class="project-card reveal">
       <div class="pc-top">
         <div class="pc-icon" style="background: rgba(74,222,128,0.1);">📧</div>
-        <span class="pc-status status-active">Activo</span>
+        <span class="pc-status status-active">Terminado</span>
       </div>
-      <div class="pc-title">App Envío de Correos</div>
-      <div class="pc-desc">Aplicación de escritorio (.exe) con CustomTkinter para envío masivo de correos institucionales. Incluye firma HTML de EDAD, progreso en tiempo real y configuración SMTP guardada en JSON.</div>
+      <div class="pc-title">Enviador de Correos Masivos</div>
+      <div class="pc-desc">Una app de escritorio (.exe) que desarrollé para la Escuela EDAD. Envía correos con firma HTML y adjuntos usando Gmail. Me ayudó a entender mejor Python, CustomTkinter y el manejo de errores.</div>
       <div class="pc-tags">
         <span class="pc-tag">Python</span>
         <span class="pc-tag">CustomTkinter</span>
         <span class="pc-tag">SMTP</span>
         <span class="pc-tag">PyInstaller</span>
-        <span class="pc-tag">.exe</span>
       </div>
     </div>
 
     <div class="project-card reveal" style="transition-delay: 0.3s">
       <div class="pc-top">
         <div class="pc-icon" style="background: rgba(251,113,133,0.12);">🌐</div>
-        <span class="pc-status status-ongoing">En construcción</span>
+        <span class="pc-status status-ongoing">Practicando</span>
       </div>
-      <div class="pc-title">Portafolio + Web Apps</div>
-      <div class="pc-desc">Desarrollo de proyectos web freelance con Django y frontend moderno. Meta: trabajar 100% remoto construyendo productos digitales para clientes en Latinoamérica y el mundo.</div>
+      <div class="pc-title">Web Personal + Django</div>
+      <div class="pc-desc">Estoy aprendiendo Django para crear aplicaciones web. Mi meta es poder ofrecer servicios de desarrollo web a pequeños negocios.</div>
       <div class="pc-tags">
         <span class="pc-tag">Django</span>
         <span class="pc-tag">HTML/CSS</span>
         <span class="pc-tag">JavaScript</span>
-        <span class="pc-tag">Freelance</span>
+        <span class="pc-tag">Aprendiendo</span>
       </div>
     </div>
 
@@ -738,81 +723,73 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">// habilidades</div>
-  <h2 class="section-title">Stack técnico</h2>
-  <p class="section-desc">Herramientas con las que trabajo a diario.</p>
+  <div class="section-label">// lo que estoy aprendiendo</div>
+  <h2 class="section-title">Stack en construcción</h2>
+  <p class="section-desc">Tecnologías con las que ya me defiendo un poco y otras que estoy estudiando.</p>
 
   <div class="skills-wrapper">
     <div class="skill-group reveal">
       <span class="sg-icon">🐍</span>
       <div class="sg-title">Python</div>
-      <div class="sg-desc">Lenguaje principal para todo — scripts, apps, automatización y backend.</div>
+      <div class="sg-desc">Mi lenguaje principal. Lo uso para scripts, automatizaciones y pequeñas apps.</div>
       <div class="sg-items">
-        <span class="sg-item">Python 3.x</span>
-        <span class="sg-item">venv / pip</span>
-        <span class="sg-item">OOP</span>
-        <span class="sg-item">JSON / CSV</span>
-        <span class="sg-item">SMTP / Email</span>
+        <span class="sg-item">Python 3</span>
+        <span class="sg-item">venv</span>
+        <span class="sg-item">JSON</span>
+        <span class="sg-item">SMTP</span>
       </div>
     </div>
 
     <div class="skill-group reveal" style="transition-delay: 0.1s">
       <span class="sg-icon">🤖</span>
       <div class="sg-title">Automatización</div>
-      <div class="sg-desc">Bots web, control de GUI, mensajería masiva y scraping.</div>
+      <div class="sg-desc">Me encanta crear bots y scripts que ahorren tiempo.</div>
       <div class="sg-items">
         <span class="sg-item">Selenium</span>
         <span class="sg-item">PyAutoGUI</span>
         <span class="sg-item">pywhatkit</span>
-        <span class="sg-item">BeautifulSoup</span>
-        <span class="sg-item">Brave / Chrome</span>
       </div>
     </div>
 
     <div class="skill-group reveal" style="transition-delay: 0.2s">
       <span class="sg-icon">🌐</span>
-      <div class="sg-title">Web / Backend</div>
-      <div class="sg-desc">Desarrollo de aplicaciones web con Django y frontend clásico.</div>
+      <div class="sg-title">Web (iniciando)</div>
+      <div class="sg-desc">Aprendiendo las bases para construir sitios web dinámicos.</div>
       <div class="sg-items">
         <span class="sg-item">Django</span>
-        <span class="sg-item">HTML5</span>
+        <span class="sg-item">HTML</span>
         <span class="sg-item">CSS</span>
-        <span class="sg-item">JavaScript</span>
-        <span class="sg-item">PostgreSQL</span>
       </div>
     </div>
 
     <div class="skill-group reveal" style="transition-delay: 0.3s">
       <span class="sg-icon">🖥️</span>
       <div class="sg-title">Apps de Escritorio</div>
-      <div class="sg-desc">Interfaces gráficas modernas empaquetadas como ejecutables Windows.</div>
+      <div class="sg-desc">Interfaces gráficas sencillas para herramientas locales.</div>
       <div class="sg-items">
         <span class="sg-item">CustomTkinter</span>
         <span class="sg-item">Tkinter</span>
         <span class="sg-item">PyInstaller</span>
-        <span class="sg-item">.exe packaging</span>
       </div>
     </div>
 
     <div class="skill-group reveal" style="transition-delay: 0.4s">
       <span class="sg-icon">🛠️</span>
       <div class="sg-title">Herramientas</div>
-      <div class="sg-desc">Entorno de desarrollo, control de versiones y organización de proyectos.</div>
+      <div class="sg-desc">Lo que uso en el día a día para organizarme y programar.</div>
       <div class="sg-items">
         <span class="sg-item">VS Code</span>
         <span class="sg-item">Git / GitHub</span>
-        <span class="sg-item">PostgreSQL</span>
       </div>
     </div>
 
     <div class="skill-group reveal" style="transition-delay: 0.5s">
       <span class="sg-icon">📁</span>
       <div class="sg-title">Organización</div>
-      <div class="sg-desc">Estructura de proyectos limpia al estilo MoureDev, workspaces aislados.</div>
+      <div class="sg-desc">Intento mantener mis proyectos ordenados y documentados.</div>
       <div class="sg-items">
-        <span class="sg-item">01- Folder structure</span>
+        <span class="sg-item">Estructura clara</span>
         <span class="sg-item">MoureDev style</span>
-        <span class="sg-item">Documentación</span>
       </div>
     </div>
   </div>
@@ -827,32 +804,32 @@
 
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>Soy <strong>Josue David</strong>, desarrollador independiente basado en <strong>Arequipa, Perú</strong>. Me especializo en Python, Django y automatización de procesos.</p>
-      <p>Mi objetivo es trabajar <strong>100% de forma remota</strong> construyendo websites, apps y herramientas de automatización para clientes reales — desde pequeñas empresas locales hasta proyectos internacionales.</p>
-      <p>Me apasiona el código <strong>ordenado y bien estructurado</strong>. Cada proyecto que entrego tiene su entorno virtual, su requirements.txt y su estructura de carpetas numeradas clara — influenciado por el estilo <strong>MoureDev</strong>.</p>
+      <p>Soy <strong>Josue David</strong>, vivo en <strong>Arequipa, Perú</strong>. Empecé a programar hace poco y cada día descubro algo nuevo. Me motiva resolver problemas y crear herramientas que de verdad sirvan.</p>
+      <p>Mi objetivo es conseguir mi <strong>primer trabajo como desarrollador junior</strong> y seguir aprendiendo de profesionales con más experiencia. Por ahora, construyo proyectos pequeños para practicar y armar mi portafolio.</p>
+      <p>Me inspira el estilo de trabajo de <strong>MoureDev</strong> y trato de aplicar buenas prácticas desde el principio: entornos virtuales, código ordenado y documentación.</p>
     </div>
 
     <div class="reveal" style="transition-delay: 0.15s">
       <div class="timeline">
         <div class="tl-item">
-          <div class="tl-year">2026 — Activo</div>
-          <div class="tl-title">Freelance Developer</div>
-          <div class="tl-desc">Proyectos de automatización, apps de escritorio y herramientas web para clientes como EDAD.</div>
+          <div class="tl-year">2026 — Ahora</div>
+          <div class="tl-title">Aprendiz de Desarrollo</div>
+          <div class="tl-desc">Practicando con proyectos personales y freelance pequeños.</div>
         </div>
         <div class="tl-item">
           <div class="tl-year">2026</div>
-          <div class="tl-title">App Envío de Correos (.exe)</div>
-          <div class="tl-desc">Primera aplicación de escritorio empaquetada con CustomTkinter + PyInstaller para cliente institucional.</div>
+          <div class="tl-title">Primer proyecto real</div>
+          <div class="tl-desc">App de envío de correos para EDAD. Aprendí mucho sobre Python, GUI y empaquetado.</div>
         </div>
         <div class="tl-item">
           <div class="tl-year">2026</div>
-          <div class="tl-title">Automatización WhatsApp</div>
-          <div class="tl-desc">Sistema funcional de mensajería masiva con pywhatkit + PyAutoGUI.</div>
+          <div class="tl-title">Automatización básica</div>
+          <div class="tl-desc">Scripts para WhatsApp y navegador. Primer contacto con Selenium.</div>
         </div>
         <div class="tl-item">
-          <div class="tl-year">Ahora</div>
-          <div class="tl-title">Creciendo como Full Stack</div>
-          <div class="tl-desc">Expandiendo hacia Django + frontend moderno para construir productos web completos.</div>
+          <div class="tl-year">Meta</div>
+          <div class="tl-title">Desarrollador Junior</div>
+          <div class="tl-desc">Conseguir un trabajo donde pueda seguir creciendo y aportar valor.</div>
         </div>
       </div>
     </div>
@@ -864,8 +841,8 @@
   <div style="background: var(--bg2); border-radius: 32px; border: 0.5px solid var(--border); padding: 5rem 3rem; text-align: center; position: relative; overflow: hidden; max-width: 900px; margin: 0 auto 6rem;">
     <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,109,250,0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
     <div class="section-label" style="margin-bottom: 1rem;">// contacto</div>
-    <h2 class="contact-title reveal">¿Tienes un proyecto?<br>Hablemos.</h2>
-    <p class="contact-sub reveal">Disponible para proyectos freelance, automatizaciones y desarrollo web. Respondo rápido.</p>
+    <h2 class="contact-title reveal">¿Tienes un consejo o una oportunidad?<br>Escúchame.</h2>
+    <p class="contact-sub reveal">Estoy abierto a colaborar, aprender y recibir feedback. Si tienes un proyecto pequeño o una recomendación, ¡escríbeme!</p>
     <div class="contact-links reveal">
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jdavidms123x@gmail.com" target="_blank" class="contact-link">
         <div class="cl-icon">✉</div>
@@ -876,6 +853,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         </div>
         GitHub
+      </a>
       <a href="https://wa.me/51900115705" class="contact-link" target="_blank">
         <div class="cl-icon">📱</div>
         WhatsApp
@@ -885,7 +863,7 @@
 </section>
 
 <footer>
-  <p>josue.dev — Arequipa, Perú +51 · Construido con HTML, CSS & Python love</p>
+  <p>josue.dev — Arequipa, Perú · Hecho con ganas de aprender</p>
 </footer>
 
 <script>

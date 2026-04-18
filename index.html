@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josue David — Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #1a1a26;
+    --accent: #7c6dfa;
+    --accent2: #a78bfa;
+    --accent3: #c4b5fd;
+    --text: #f0eeff;
+    --muted: #8b8aa8;
+    --border: rgba(124, 109, 250, 0.2);
+    --border2: rgba(124, 109, 250, 0.08);
+    --green: #4ade80;
+    --amber: #fbbf24;
+    --coral: #fb7185;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Cursor glow */
+  body::before {
+    content: '';
+    position: fixed;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(124,109,250,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    left: var(--cx, 50%);
+    top: var(--cy, 50%);
+    z-index: 0;
+    transition: left 0.3s ease, top 0.3s ease;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,15,0.8);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border2);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent2); }
+
+  nav ul {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: white !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    transition: background 0.2s, transform 0.1s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(124,109,250,0.1);
+    border: 0.5px solid var(--border);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent3);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+
+  .hero-title .line2 { color: var(--accent2); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.6s forwards;
+  }
+
+  .hero-sub strong { color: var(--text); font-weight: 400; }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.8s forwards;
+  }
+
+  .btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 4px 24px rgba(124,109,250,0.4);
+  }
+
+  .btn-primary:hover { box-shadow: 0 6px 32px rgba(124,109,250,0.6); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 0.5px solid var(--border);
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent2); background: rgba(124,109,250,0.06); }
+
+  /* Hero Card */
+  .hero-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeLeft 0.7s 0.5s forwards;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(124,109,250,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hc-header {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hc-avatar {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.2rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .hc-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+  .hc-role { font-size: 0.8rem; color: var(--muted); }
+
+  .hc-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.75rem; margin-bottom: 1.5rem;
+  }
+
+  .hc-stat {
+    background: var(--bg3);
+    border: 0.5px solid var(--border2);
+    border-radius: 12px;
+    padding: 0.875rem;
+  }
+
+  .hc-stat-n {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.5rem;
+    color: var(--accent2);
+    display: block;
+  }
+
+  .hc-stat-l { font-size: 0.75rem; color: var(--muted); }
+
+  .hc-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .skill-tag {
+    background: rgba(124,109,250,0.1);
+    border: 0.5px solid var(--border);
+    border-radius: 100px;
+    padding: 0.3rem 0.8rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent3);
+  }
+
+  .skill-tag.green { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.3); color: #86efac; }
+  .skill-tag.amber { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: #fde68a; }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 520px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border2);
+    border-radius: 20px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
+    text-decoration: none;
+    display: block;
+    color: var(--text);
+  }
+
+  .project-card:hover {
+    border-color: var(--border);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(124,109,250,0.06) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 20px;
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .pc-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 1.25rem;
+  }
+
+  .pc-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+  }
+
+  .pc-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+  }
+
+  .status-active { background: rgba(74,222,128,0.1); color: #86efac; border: 0.5px solid rgba(74,222,128,0.3); }
+  .status-done { background: rgba(124,109,250,0.1); color: var(--accent3); border: 0.5px solid var(--border); }
+  .status-ongoing { background: rgba(251,191,36,0.1); color: #fde68a; border: 0.5px solid rgba(251,191,36,0.3); }
+
+  .pc-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .pc-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+
+  .pc-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+  .pc-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    background: var(--bg3);
+    border: 0.5px solid var(--border2);
+    border-radius: 6px;
+    padding: 0.2rem 0.55rem;
+  }
+
+  /* SKILLS */
+  .skills-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: var(--bg2);
+    border: 0.5px solid var(--border2);
+    border-radius: 20px;
+    padding: 1.75rem;
+  }
+
+  .sg-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+
+  .sg-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .sg-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.25rem; }
+
+  .sg-items { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+  .sg-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 8px;
+    background: var(--bg3);
+    color: var(--muted);
+    border: 0.5px solid var(--border2);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .sg-item:hover { color: var(--accent3); border-color: var(--border); }
+
+  /* ABOUT / TIMELINE */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 400; }
+
+  .timeline { position: relative; padding-left: 1.5rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 1px; height: calc(100% - 8px);
+    background: var(--border);
+  }
+
+  .tl-item { position: relative; margin-bottom: 2rem; padding-left: 1.5rem; }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -1.55rem; top: 6px;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .tl-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .tl-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .tl-desc { font-size: 0.82rem; color: var(--muted); }
+
+  /* CONTACT */
+  #contact {
+    background: var(--bg2);
+    border-radius: 32px;
+    border: 0.5px solid var(--border);
+    margin: 0 2rem 6rem;
+    padding: 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 960px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(124,109,250,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .contact-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .contact-sub { color: var(--muted); font-weight: 300; max-width: 400px; margin: 0 auto 2.5rem; }
+
+  .contact-links {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 100px;
+    padding: 0.75rem 1.5rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 400;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  }
+
+  .contact-link:hover { border-color: var(--accent); background: rgba(124,109,250,0.08); transform: translateY(-2px); color: var(--accent2); }
+
+  .cl-icon {
+    width: 28px; height: 28px;
+    background: rgba(124,109,250,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-family: 'DM Mono', monospace;
+    border-top: 0.5px solid var(--border2);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 0.5px;
+    background: var(--border2);
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* Background grid */
+  .bg-grid {
+    position: fixed;
+    inset: 0; z-index: -1;
+    background-image:
+      linear-gradient(rgba(124,109,250,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,109,250,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.5rem; }
+    #hero { padding: 7rem 1.5rem 4rem; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    #contact { padding: 3rem 1.5rem; margin: 0 1rem 4rem; }
+  }
+
+  @media (max-width: 600px) {
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">josue<span>.</span>dev</a>
+  <ul>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#contact" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">Disponible para proyectos freelance</div>
+      <h1 class="hero-title">
+        Josue David<br>
+        <span class="line2">Developer &</span><br>
+        Automatizador
+      </h1>
+      <p class="hero-sub">
+        Construyo <strong>apps web, herramientas de escritorio y automatizaciones</strong> con Python y Django. Basado en Arequipa, Perú — trabajando con clientes en todo el mundo.
+      </p>
+      <div class="hero-btns">
+        <a href="#proyectos" class="btn btn-primary">Ver proyectos →</a>
+        <a href="#contact" class="btn btn-ghost">Hablemos</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hc-header">
+        <div class="hc-avatar">JD</div>
+        <div>
+          <div class="hc-name">Josue David</div>
+          <div class="hc-role">Python · Django · Automatización</div>
+        </div>
+      </div>
+      <div class="hc-stats">
+        <div class="hc-stat">
+          <span class="hc-stat-n">3+</span>
+          <span class="hc-stat-l">Proyectos activos</span>
+        </div>
+        <div class="hc-stat">
+          <span class="hc-stat-n">2026</span>
+          <span class="hc-stat-l">Arequipa, Perú</span>
+        </div>
+        <div class="hc-stat">
+          <span class="hc-stat-n">100%</span>
+          <span class="hc-stat-l">Remoto</span>
+        </div>
+        <div class="hc-stat">
+          <span class="hc-stat-n">∞</span>
+          <span class="hc-stat-l">Automatizaciones</span>
+        </div>
+      </div>
+      <div class="hc-skills">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag green">Selenium</span>
+        <span class="skill-tag green">PyAutoGUI</span>
+        <span class="skill-tag amber">CustomTkinter</span>
+        <span class="skill-tag amber">SMTP</span>
+        <span class="skill-tag">PyInstaller</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="section-label">// proyectos</div>
+  <h2 class="section-title">Lo que he construido</h2>
+  <p class="section-desc">Herramientas reales resolviendo problemas reales — desde automatización hasta apps de escritorio.</p>
+
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="pc-top">
+        <div class="pc-icon" style="background: rgba(74,222,128,0.1);">📧</div>
+        <span class="pc-status status-active">Activo</span>
+      </div>
+      <div class="pc-title">App Envío de Correos</div>
+      <div class="pc-desc">Aplicación de escritorio (.exe) con CustomTkinter para envío masivo de correos institucionales. Incluye firma HTML de EDAD, progreso en tiempo real y configuración SMTP guardada en JSON.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Python</span>
+        <span class="pc-tag">CustomTkinter</span>
+        <span class="pc-tag">SMTP</span>
+        <span class="pc-tag">PyInstaller</span>
+        <span class="pc-tag">.exe</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay: 0.3s">
+      <div class="pc-top">
+        <div class="pc-icon" style="background: rgba(251,113,133,0.12);">🌐</div>
+        <span class="pc-status status-ongoing">En construcción</span>
+      </div>
+      <div class="pc-title">Portafolio + Web Apps</div>
+      <div class="pc-desc">Desarrollo de proyectos web freelance con Django y frontend moderno. Meta: trabajar 100% remoto construyendo productos digitales para clientes en Latinoamérica y el mundo.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Django</span>
+        <span class="pc-tag">HTML/CSS</span>
+        <span class="pc-tag">JavaScript</span>
+        <span class="pc-tag">Freelance</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// habilidades</div>
+  <h2 class="section-title">Stack técnico</h2>
+  <p class="section-desc">Herramientas con las que trabajo a diario.</p>
+
+  <div class="skills-wrapper">
+    <div class="skill-group reveal">
+      <span class="sg-icon">🐍</span>
+      <div class="sg-title">Python</div>
+      <div class="sg-desc">Lenguaje principal para todo — scripts, apps, automatización y backend.</div>
+      <div class="sg-items">
+        <span class="sg-item">Python 3.x</span>
+        <span class="sg-item">venv / pip</span>
+        <span class="sg-item">OOP</span>
+        <span class="sg-item">JSON / CSV</span>
+        <span class="sg-item">SMTP / Email</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal" style="transition-delay: 0.1s">
+      <span class="sg-icon">🤖</span>
+      <div class="sg-title">Automatización</div>
+      <div class="sg-desc">Bots web, control de GUI, mensajería masiva y scraping.</div>
+      <div class="sg-items">
+        <span class="sg-item">Selenium</span>
+        <span class="sg-item">PyAutoGUI</span>
+        <span class="sg-item">pywhatkit</span>
+        <span class="sg-item">BeautifulSoup</span>
+        <span class="sg-item">Brave / Chrome</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal" style="transition-delay: 0.2s">
+      <span class="sg-icon">🌐</span>
+      <div class="sg-title">Web / Backend</div>
+      <div class="sg-desc">Desarrollo de aplicaciones web con Django y frontend clásico.</div>
+      <div class="sg-items">
+        <span class="sg-item">Django</span>
+        <span class="sg-item">HTML5</span>
+        <span class="sg-item">CSS</span>
+        <span class="sg-item">JavaScript</span>
+        <span class="sg-item">PostgreSQL</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal" style="transition-delay: 0.3s">
+      <span class="sg-icon">🖥️</span>
+      <div class="sg-title">Apps de Escritorio</div>
+      <div class="sg-desc">Interfaces gráficas modernas empaquetadas como ejecutables Windows.</div>
+      <div class="sg-items">
+        <span class="sg-item">CustomTkinter</span>
+        <span class="sg-item">Tkinter</span>
+        <span class="sg-item">PyInstaller</span>
+        <span class="sg-item">.exe packaging</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal" style="transition-delay: 0.4s">
+      <span class="sg-icon">🛠️</span>
+      <div class="sg-title">Herramientas</div>
+      <div class="sg-desc">Entorno de desarrollo, control de versiones y organización de proyectos.</div>
+      <div class="sg-items">
+        <span class="sg-item">VS Code</span>
+        <span class="sg-item">Git / GitHub</span>
+        <span class="sg-item">PostgreSQL</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal" style="transition-delay: 0.5s">
+      <span class="sg-icon">📁</span>
+      <div class="sg-title">Organización</div>
+      <div class="sg-desc">Estructura de proyectos limpia al estilo MoureDev, workspaces aislados.</div>
+      <div class="sg-items">
+        <span class="sg-item">01- Folder structure</span>
+        <span class="sg-item">MoureDev style</span>
+        <span class="sg-item">Documentación</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// sobre mí</div>
+  <h2 class="section-title">Quién soy</h2>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Soy <strong>Josue David</strong>, desarrollador independiente basado en <strong>Arequipa, Perú</strong>. Me especializo en Python, Django y automatización de procesos.</p>
+      <p>Mi objetivo es trabajar <strong>100% de forma remota</strong> construyendo websites, apps y herramientas de automatización para clientes reales — desde pequeñas empresas locales hasta proyectos internacionales.</p>
+      <p>Me apasiona el código <strong>ordenado y bien estructurado</strong>. Cada proyecto que entrego tiene su entorno virtual, su requirements.txt y su estructura de carpetas numeradas clara — influenciado por el estilo <strong>MoureDev</strong>.</p>
+      <p>Actualmente trabajando con la <strong>Escuela de Alta Dirección Profesional (EDAD)</strong> en Arequipa, automatizando procesos administrativos y de comunicación.</p>
+    </div>
+
+    <div class="reveal" style="transition-delay: 0.15s">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2026 — Activo</div>
+          <div class="tl-title">Freelance Developer</div>
+          <div class="tl-desc">Proyectos de automatización, apps de escritorio y herramientas web para clientes como EDAD.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-title">App Envío de Correos (.exe)</div>
+          <div class="tl-desc">Primera aplicación de escritorio empaquetada con CustomTkinter + PyInstaller para cliente institucional.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-title">Automatización WhatsApp</div>
+          <div class="tl-desc">Sistema funcional de mensajería masiva con pywhatkit + PyAutoGUI.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Ahora</div>
+          <div class="tl-title">Creciendo como Full Stack</div>
+          <div class="tl-desc">Expandiendo hacia Django + frontend moderno para construir productos web completos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding: 0; max-width: 100%;">
+  <div style="background: var(--bg2); border-radius: 32px; border: 0.5px solid var(--border); padding: 5rem 3rem; text-align: center; position: relative; overflow: hidden; max-width: 900px; margin: 0 auto 6rem;">
+    <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,109,250,0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+    <div class="section-label" style="margin-bottom: 1rem;">// contacto</div>
+    <h2 class="contact-title reveal">¿Tienes un proyecto?<br>Hablemos.</h2>
+    <p class="contact-sub reveal">Disponible para proyectos freelance, automatizaciones y desarrollo web. Respondo rápido.</p>
+    <div class="contact-links reveal">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jdavidms123x@gmail.com" target="_blank" class="contact-link">
+        <div class="cl-icon">✉</div>
+        Email
+      </a>
+      <a href="https://github.com/David159x" class="contact-link" target="_blank">
+        <div class="cl-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </div>
+        GitHub
+      <a href="https://wa.me/51900115705" class="contact-link" target="_blank">
+        <div class="cl-icon">📱</div>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>josue.dev — Arequipa, Perú +51 · Construido con HTML, CSS & Python love</p>
+</footer>
+
+<script>
+  document.addEventListener('mousemove', e => {
+    document.body.style.setProperty('--cx', e.clientX + 'px');
+    document.body.style.setProperty('--cy', e.clientY + 'px');
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
